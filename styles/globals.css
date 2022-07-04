@@ -1,0 +1,35 @@
+@import url("https://fonts.googleapis.com/css2?family=Pirata+One&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    body {
+        @apply bg-slate-800 text-white lg:overflow-hidden;
+    }
+}
+
+@layer utilities {
+    .logo-font {
+        font-family: "Pirata One", cursive;
+    }
+
+    .scrollbar::-webkit-scrollbar {
+        width: 7.5px;
+        height: 7.5px;
+    }
+
+    .scrollbar::-webkit-scrollbar-thumb {
+        @apply bg-gray-700 rounded-full;
+    }
+
+    .scrollbar::-webkit-scrollbar-track {
+        margin: 0 25px;
+    }
+
+    .chat-height {
+        max-height: calc(100vh - 13.25rem);
+        height: calc(100vh - 13.25rem);
+    }
+}
