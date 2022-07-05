@@ -12,7 +12,7 @@ const Layout = ({ children }) => {
 
                 <div
                     className="
-                        mt-8
+                        mt-12
                         mx-auto
                         w-[85%]
                         lg:w-[60%]

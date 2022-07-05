@@ -28,7 +28,12 @@
         margin: 0 25px;
     }
 
-    .chat-height {
+    .lg-chat-height {
+        max-height: calc(100vh - 10.75rem);
+        height: calc(100vh - 10.75rem);
+    }
+
+    .\32xl-chat-height {
         max-height: calc(100vh - 13.25rem);
         height: calc(100vh - 13.25rem);
     }

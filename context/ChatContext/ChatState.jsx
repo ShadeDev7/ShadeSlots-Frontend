@@ -8,6 +8,8 @@ import initialState from "./initialState";
 
 import { SET_CONNECTED, UPDATE_ONLINE_USERS, UPDATE_MESSAGES } from "./types";
 
+import { scrollChatToBottom } from "../../utils";
+
 const socket = io(process.env.NEXT_PUBLIC_WEBSOCKET_URI);
 
 const ChatState = props => {
@@ -53,16 +55,14 @@ const ChatState = props => {
             updateOnlineUsers(data);
         });
 
-        return () => socket.off();
-    }, [state.onlineUsers]);
-
-    useEffect(() => {
         socket.on("received_message", ({ message }) => {
             updateMessages(message);
         });
 
+        scrollChatToBottom();
+
         return () => socket.off();
-    }, [state.messages]);
+    }, [state.onlineUsers, state.messages]);
 
     return (
         <ChatContext.Provider value={{ ...state, sendMessage }}>

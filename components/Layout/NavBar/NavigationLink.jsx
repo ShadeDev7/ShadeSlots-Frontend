@@ -1,6 +1,8 @@
 import Link from "next/link";
 import Image from "next/image";
 
+import { firstLetterToUppercase } from "../../../utils";
+
 const NavigationLink = ({ link, active, children }) => {
     return (
         <Link href={link === "home" ? "/" : `/${link}`}>
@@ -15,10 +17,17 @@ const NavigationLink = ({ link, active, children }) => {
                     hover:bg-gray-700
                     transition-colors
                     duration-300
+                    select-none
                     ${active ? "bg-gray-700" : ""}
                 `}
             >
-                <Image src={`/imgs/icons/${link}.svg`} width="16px" height="16px" layout="fixed" />
+                <Image
+                    src={`/imgs/icons/${link}.svg`}
+                    alt={firstLetterToUppercase(link)}
+                    width="16px"
+                    height="16px"
+                    layout="fixed"
+                />
                 <p className="inline">{children}</p>
             </a>
         </Link>
