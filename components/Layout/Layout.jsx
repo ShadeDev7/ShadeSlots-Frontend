@@ -1,10 +1,18 @@
-import Header from "./Header";
+import { useContext } from "react";
+
+import AuthContext from "../../context/AuthContext/AuthContext";
+
+import Header from "./Header/Header";
+import AuthModal from "./AuthModal/AuthModal";
 import Chat from "./Chat/Chat";
 import NavBar from "./NavBar/NavBar";
 
 const Layout = ({ children }) => {
+    const { showAuthModal } = useContext(AuthContext);
     return (
         <div className="w-full">
+            {showAuthModal && <AuthModal />}
+
             <Header />
 
             <div className="w-full flex">

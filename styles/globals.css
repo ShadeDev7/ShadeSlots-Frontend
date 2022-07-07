@@ -37,4 +37,12 @@
         max-height: calc(100vh - 13.25rem);
         height: calc(100vh - 13.25rem);
     }
+
+    .inputBox input:valid ~ span,
+    .inputBox input:focus ~ span {
+        @apply px-1
+        bg-gray-800
+        text-sm;
+        transform: translateY(-20px);
+    }
 }

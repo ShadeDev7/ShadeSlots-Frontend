@@ -59,10 +59,12 @@ const ChatState = props => {
             updateMessages(message);
         });
 
-        scrollChatToBottom();
-
         return () => socket.off();
     }, [state.onlineUsers, state.messages]);
+
+    useEffect(() => {
+        scrollChatToBottom();
+    }, [state.messages]);
 
     return (
         <ChatContext.Provider value={{ ...state, sendMessage }}>
