@@ -57,33 +57,53 @@ const AuthModal = () => {
                     flex-col
                     items-center
                     justify-center
+<<<<<<< HEAD
                     gap-6
+=======
+                    gap-8
+>>>>>>> 4e95d4c6998c70e93600ee601832d8ccf80bef8b
                     hover:cursor-auto
                 "
             >
                 <div className="w-full flex justify-around bg-gray-900 rounded">
                     <button
+<<<<<<< HEAD
                         onClick={modal !== "signin" ? () => setAuthModal("signin") : null}
                         className={`py-2 w-full rounded-l font-bold transition-colors duration-300 ${
                             modal === "signin" ? "bg-gray-700" : "hover:bg-slate-900"
+=======
+                        onClick={modal !== "signin" ? () => setAuthModal("signin") : undefined}
+                        className={`py-2 w-full rounded-l font-bold transition-colors duration-300 ${
+                            modal === "signin" ? "bg-gray-700" : ""
+>>>>>>> 4e95d4c6998c70e93600ee601832d8ccf80bef8b
                         }`}
                     >
                         Sign In
                     </button>
 
                     <button
+<<<<<<< HEAD
                         onClick={modal !== "login" ? () => setAuthModal("login") : null}
                         className={`py-2 w-full rounded-r font-bold transition-colors duration-300 ${
                             modal === "login" ? "bg-gray-700" : "hover:bg-slate-900"
+=======
+                        onClick={modal !== "singin" ? () => setAuthModal("login") : undefined}
+                        className={`py-2 w-full rounded-r font-bold transition-colors duration-300 ${
+                            modal === "login" ? "bg-gray-700" : ""
+>>>>>>> 4e95d4c6998c70e93600ee601832d8ccf80bef8b
                         }`}
                     >
                         Log In
                     </button>
                 </div>
 
+<<<<<<< HEAD
                 <div className="w-full">
                     <AuthForm variant={modal} />
                 </div>
+=======
+                <AuthForm variant={modal} />
+>>>>>>> 4e95d4c6998c70e93600ee601832d8ccf80bef8b
             </div>
         </div>
     );

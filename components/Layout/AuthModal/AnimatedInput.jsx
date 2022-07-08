@@ -1,14 +1,24 @@
 import { Field } from "formik";
 
+<<<<<<< HEAD
 const AnimatedInput = ({ field, type, placeholder, value }) => {
+=======
+const AnimatedInput = ({ field, type, placeholder }) => {
+>>>>>>> 4e95d4c6998c70e93600ee601832d8ccf80bef8b
     return (
         <div className="inputBox relative">
             <Field
                 autoComplete="off"
                 required="required"
+<<<<<<< HEAD
                 name={field}
                 type={type}
                 value={value || ""}
+=======
+                id={field}
+                name={field}
+                type={type}
+>>>>>>> 4e95d4c6998c70e93600ee601832d8ccf80bef8b
                 className="
                     py-2
                     px-3
