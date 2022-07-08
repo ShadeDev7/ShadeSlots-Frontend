@@ -4,5 +4,5 @@ export const firstLetterToUppercase = str => str.charAt(0).toUpperCase() + str.s
 
 export const scrollChatToBottom = () => {
     const messageBox = document.getElementById("messageBox");
-    messageBox.scroll(0, messageBox.scrollHeight);
+    messageBox?.scroll(0, messageBox.scrollHeight);
 };

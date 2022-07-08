@@ -1,12 +1,15 @@
 import ChatState from "../context/ChatContext/ChatState";
+import AuthState from "../context/AuthContext/AuthState";
 
 import "../styles/globals.css";
 
 function MyApp({ Component, pageProps }) {
     return (
-        <ChatState>
-            <Component {...pageProps} />
-        </ChatState>
+        <AuthState>
+            <ChatState>
+                <Component {...pageProps} />
+            </ChatState>
+        </AuthState>
     );
 }
 

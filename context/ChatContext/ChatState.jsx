@@ -10,7 +10,7 @@ import { SET_CONNECTED, UPDATE_ONLINE_USERS, UPDATE_MESSAGES } from "./types";
 
 import { scrollChatToBottom } from "../../utils";
 
-const socket = io(process.env.NEXT_PUBLIC_WEBSOCKET_URI);
+const socket = io(process.env.NEXT_PUBLIC_CHAT_WEBSOCKET_URI);
 
 const ChatState = props => {
     const [state, dispatch] = useReducer(ChatReducer, initialState);
@@ -59,10 +59,12 @@ const ChatState = props => {
             updateMessages(message);
         });
 
-        scrollChatToBottom();
-
         return () => socket.off();
     }, [state.onlineUsers, state.messages]);
+
+    useEffect(() => {
+        scrollChatToBottom();
+    }, [state.messages]);
 
     return (
         <ChatContext.Provider value={{ ...state, sendMessage }}>
