@@ -5,11 +5,7 @@ import AuthReducer from "./AuthReducer";
 
 import initialState from "./initialState";
 
-<<<<<<< HEAD
 import { SET_SHOW_MODAL, SET_MODAL, HANDLE_AUTH_TOKEN } from "./types";
-=======
-import { SET_SHOW_MODAL, SET_MODAL } from "./types";
->>>>>>> 4e95d4c6998c70e93600ee601832d8ccf80bef8b
 
 const ChatState = props => {
     const [state, dispatch] = useReducer(AuthReducer, initialState);
@@ -29,7 +25,6 @@ const ChatState = props => {
         });
     };
 
-<<<<<<< HEAD
     const handleAuthToken = token => {
         localStorage.setItem("auth-jwt", token);
 
@@ -40,15 +35,8 @@ const ChatState = props => {
     };
 
     // useEffect's
-
     return (
         <AuthContext.Provider value={{ ...state, setShowAuthModal, setAuthModal, handleAuthToken }}>
-=======
-    // useEffect's
-
-    return (
-        <AuthContext.Provider value={{ ...state, setShowAuthModal, setAuthModal }}>
->>>>>>> 4e95d4c6998c70e93600ee601832d8ccf80bef8b
             {props.children}
         </AuthContext.Provider>
     );

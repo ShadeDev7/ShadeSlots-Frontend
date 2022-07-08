@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 import { SET_SHOW_MODAL, SET_MODAL, HANDLE_AUTH_TOKEN } from "./types";
-=======
-import { SET_SHOW_MODAL, SET_MODAL } from "./types";
->>>>>>> 4e95d4c6998c70e93600ee601832d8ccf80bef8b
 
 import initialState from "./initialState";
 
@@ -22,7 +18,6 @@ export default (state, action) => {
                 modal: payload,
             };
 
-<<<<<<< HEAD
         case HANDLE_AUTH_TOKEN:
             const decodeToken = async () => {
                 try {
@@ -58,8 +53,6 @@ export default (state, action) => {
                 user: decodedToken,
             };
 
-=======
->>>>>>> 4e95d4c6998c70e93600ee601832d8ccf80bef8b
         default:
             return state;
     }

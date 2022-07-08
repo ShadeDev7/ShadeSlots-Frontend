@@ -1,19 +1,13 @@
-<<<<<<< HEAD
 import { useContext, useState } from "react";
 import { Formik, Form } from "formik";
 
 import AuthContext from "../../../context/AuthContext/AuthContext";
 
-=======
-import { Formik, Form } from "formik";
-
->>>>>>> 4e95d4c6998c70e93600ee601832d8ccf80bef8b
 import AnimatedInput from "./AnimatedInput";
 
 import schemas from "../../../data/schemas";
 
 const AuthForm = ({ variant }) => {
-<<<<<<< HEAD
     const { handleAuthToken } = useContext(AuthContext);
 
     const [error, setError] = useState("");
@@ -76,34 +70,6 @@ const AuthForm = ({ variant }) => {
                     >
                         {schemas[variant].fields.map(({ field, type, placeholder }) => (
                             <div key={field} className="w-full flex flex-col gap-2">
-=======
-    const handleSubmit = values => {
-        console.log(`Submitting: ${JSON.stringify(values)}`);
-    };
-
-    return (
-        <div className="w-full">
-            <Formik
-                initialValues={schemas["signin"].initialValues}
-                onSubmit={async (values, { resetForm }) => {
-                    await handleSubmit(values);
-                    resetForm();
-                }}
-                validationSchema={schemas[variant].schema}
-            >
-                {({ errors, touched }) => (
-                    <Form
-                        className="
-                            flex
-                            flex-col
-                            items-center
-                            jusfity-center
-                            gap-6
-                        "
-                    >
-                        {schemas[variant].fields.map(({ field, type, placeholder }) => (
-                            <div key={field} className="w-full flex flex-col gap-1">
->>>>>>> 4e95d4c6998c70e93600ee601832d8ccf80bef8b
                                 {errors[field] && touched[field] && (
                                     <p className="text-sm text-gray-500 text-center">
                                         {errors[field]}
@@ -114,10 +80,7 @@ const AuthForm = ({ variant }) => {
                                     field={field}
                                     type={type}
                                     placeholder={placeholder}
-<<<<<<< HEAD
                                     value={values[field]}
-=======
->>>>>>> 4e95d4c6998c70e93600ee601832d8ccf80bef8b
                                 />
                             </div>
                         ))}
@@ -125,7 +88,6 @@ const AuthForm = ({ variant }) => {
                         <button
                             type="submit"
                             className="
-<<<<<<< HEAD
                             py-2
                             w-full
                             bg-gray-900
@@ -135,17 +97,6 @@ const AuthForm = ({ variant }) => {
                             transition-colors
                             duration-300
                         "
-=======
-                                py-2
-                                w-full
-                                bg-gray-900
-                                hover:bg-slate-900
-                                rounded
-                                font-bold
-                                transition-colors
-                                duration-300
-                            "
->>>>>>> 4e95d4c6998c70e93600ee601832d8ccf80bef8b
                         >
                             {variant === "login" ? "Log In" : "Sign In"}
                         </button>
