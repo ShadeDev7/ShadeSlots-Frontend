@@ -1,5 +1,5 @@
-import ChatState from "../context/ChatContext/ChatState";
 import AuthState from "../context/AuthContext/AuthState";
+import ChatState from "../context/ChatContext/ChatState";
 
 import "../styles/globals.css";
 

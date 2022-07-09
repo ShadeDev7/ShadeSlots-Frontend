@@ -1,22 +1,9 @@
-import {
-    SET_CONNECTED,
-    UPDATE_ONLINE_USERS,
-    UPDATE_MESSAGES,
-    SET_SHOW_LOGIN_MESSAGE,
-} from "./types";
-
-import initialState from "./initialState";
+import { UPDATE_ONLINE_USERS, UPDATE_MESSAGES, SET_SHOW_LOGIN_MESSAGE } from "./types";
 
 export default (state, action) => {
     const { payload, type } = action;
 
     switch (type) {
-        case SET_CONNECTED:
-            return {
-                ...state,
-                connected: payload,
-            };
-
         case UPDATE_ONLINE_USERS:
             return {
                 ...state,

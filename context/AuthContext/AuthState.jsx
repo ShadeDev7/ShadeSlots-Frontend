@@ -12,7 +12,6 @@ import { decodeToken } from "../../utils";
 const ChatState = props => {
     const [state, dispatch] = useReducer(AuthReducer, initialState);
 
-    // Functions
     const setShowAuthModal = newValue => {
         dispatch({
             type: SET_SHOW_MODAL,
@@ -29,12 +28,11 @@ const ChatState = props => {
 
     const handleAuthToken = async token => {
         const decodedToken = await decodeToken(token);
-
-        if (!decodedToken) {
-            return console.log("invalid jwt");
+        if (!decodedToken || !decodedToken.user) {
+            return localStorage.removeItem("auth-token");
         }
 
-        localStorage.setItem("auth-jwt", token);
+        localStorage.setItem("auth-token", token);
 
         dispatch({
             type: SET_USER,
@@ -42,7 +40,13 @@ const ChatState = props => {
         });
     };
 
-    // useEffect's
+    useEffect(() => {
+        const localStorageToken = localStorage.getItem("auth-token");
+        if (!localStorageToken) return;
+
+        handleAuthToken(localStorageToken);
+    }, []);
+
     return (
         <AuthContext.Provider value={{ ...state, setShowAuthModal, setAuthModal, handleAuthToken }}>
             {props.children}

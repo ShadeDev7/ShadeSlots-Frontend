@@ -7,12 +7,7 @@ import AuthContext from "../AuthContext/AuthContext";
 
 import initialState from "./initialState";
 
-import {
-    SET_CONNECTED,
-    UPDATE_ONLINE_USERS,
-    UPDATE_MESSAGES,
-    SET_SHOW_LOGIN_MESSAGE,
-} from "./types";
+import { UPDATE_ONLINE_USERS, UPDATE_MESSAGES, SET_SHOW_LOGIN_MESSAGE } from "./types";
 
 import { scrollChatToBottom } from "../../utils";
 
@@ -22,13 +17,6 @@ const ChatState = props => {
     const [state, dispatch] = useReducer(ChatReducer, initialState);
 
     const { logged, user } = useContext(AuthContext);
-
-    const setConnected = () => {
-        dispatch({
-            type: SET_CONNECTED,
-            payload: true,
-        });
-    };
 
     const updateOnlineUsers = data => {
         dispatch({
@@ -52,18 +40,10 @@ const ChatState = props => {
     };
 
     const sendMessage = message => {
-        if (!state.logged) return setShowLoginMessage(true);
+        if (!logged) return setShowLoginMessage(true);
 
         socket.emit("message", { user, message });
     };
-
-    useEffect(() => {
-        if (!socket) return;
-
-        setConnected();
-
-        socket.emit("connected");
-    }, []);
 
     useEffect(() => {
         if (!socket || !logged || !user) return;
@@ -87,7 +67,7 @@ const ChatState = props => {
         });
 
         return () => socket.off();
-    }, [state.connected, state.onlineUsers, state.messages]);
+    }, [state.onlineUsers, state.messages]);
 
     useEffect(() => {
         scrollChatToBottom();

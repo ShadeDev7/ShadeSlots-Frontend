@@ -1,7 +1,5 @@
 import { SET_SHOW_MODAL, SET_MODAL, SET_USER } from "./types";
 
-import initialState from "./initialState";
-
 export default (state, action) => {
     const { payload, type } = action;
 
