@@ -1,7 +1,9 @@
 {
-    "name": "bj-client",
+    "name": "shadeslots-client",
     "version": "0.1.0",
     "private": true,
+    "author": "Agustín Arnoldi",
+    "license": "ISC",
     "scripts": {
         "dev": "next dev",
         "build": "next build",

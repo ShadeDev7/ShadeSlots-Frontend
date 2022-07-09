@@ -5,7 +5,9 @@ import AuthReducer from "./AuthReducer";
 
 import initialState from "./initialState";
 
-import { SET_SHOW_MODAL, SET_MODAL, HANDLE_AUTH_TOKEN } from "./types";
+import { SET_SHOW_MODAL, SET_MODAL, SET_USER } from "./types";
+
+import { decodeToken } from "../../utils";
 
 const ChatState = props => {
     const [state, dispatch] = useReducer(AuthReducer, initialState);
@@ -25,12 +27,18 @@ const ChatState = props => {
         });
     };
 
-    const handleAuthToken = token => {
+    const handleAuthToken = async token => {
+        const decodedToken = await decodeToken(token);
+
+        if (!decodedToken) {
+            return console.log("invalid jwt");
+        }
+
         localStorage.setItem("auth-jwt", token);
 
         dispatch({
-            type: HANDLE_AUTH_TOKEN,
-            payload: token,
+            type: SET_USER,
+            payload: decodedToken,
         });
     };
 

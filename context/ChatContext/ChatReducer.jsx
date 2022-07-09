@@ -1,4 +1,9 @@
-import { SET_CONNECTED, UPDATE_ONLINE_USERS, UPDATE_MESSAGES } from "./types";
+import {
+    SET_CONNECTED,
+    UPDATE_ONLINE_USERS,
+    UPDATE_MESSAGES,
+    SET_SHOW_LOGIN_MESSAGE,
+} from "./types";
 
 import initialState from "./initialState";
 
@@ -13,26 +18,21 @@ export default (state, action) => {
             };
 
         case UPDATE_ONLINE_USERS:
-            const newUserMessage = payload.newUser && {
-                sender: {
-                    name: payload.newUser,
-                    profilePicture: "/imgs/placeholder_user.png",
-                    profileUrl: "#",
-                },
-                content: "just joined!",
-                type: "join",
-            };
-
             return {
                 ...state,
                 onlineUsers: payload.onlineUsers,
-                ...(payload.newUser && { messages: [...state.messages, newUserMessage] }),
             };
 
         case UPDATE_MESSAGES:
             return {
                 ...state,
                 messages: [...state.messages, payload],
+            };
+
+        case SET_SHOW_LOGIN_MESSAGE:
+            return {
+                ...state,
+                showLoginMessage: payload,
             };
 
         default:

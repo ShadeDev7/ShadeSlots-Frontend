@@ -17,7 +17,6 @@ const NavigationLink = ({ link, active, children }) => {
                     hover:bg-gray-700
                     transition-colors
                     duration-300
-                    select-none
                     ${active ? "bg-gray-700" : ""}
                 `}
             >

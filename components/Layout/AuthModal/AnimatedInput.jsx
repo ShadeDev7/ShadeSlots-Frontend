@@ -30,7 +30,6 @@ const AnimatedInput = ({ field, type, placeholder, value }) => {
                     font-medium
                     text-gray-600
                     pointer-events-none
-                    select-none
                     transition-all
                 "
             >
