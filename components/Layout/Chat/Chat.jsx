@@ -121,6 +121,7 @@ const Chat = () => {
                     <form onSubmit={handleMessage} className="mx-auto w-[90%] flex gap-4">
                         <input
                             type="text"
+                            maxLength="128"
                             placeholder="Write a message..."
                             value={message}
                             onChange={e => setMessage(e.target.value)}

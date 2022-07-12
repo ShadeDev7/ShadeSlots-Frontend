@@ -7,7 +7,7 @@ import initialState from "./initialState";
 
 import { SET_SHOW_MODAL, SET_MODAL, SET_USER } from "./types";
 
-import { decodeToken } from "../../utils";
+import { decodeAuthToken } from "../../utils";
 
 const ChatState = props => {
     const [state, dispatch] = useReducer(AuthReducer, initialState);
@@ -27,10 +27,8 @@ const ChatState = props => {
     };
 
     const handleAuthToken = async token => {
-        const decodedToken = await decodeToken(token);
-        if (!decodedToken || !decodedToken.user) {
-            return localStorage.removeItem("auth-token");
-        }
+        const decodedToken = await decodeAuthToken(token);
+        if (!decodedToken) return localStorage.removeItem("auth-token");
 
         localStorage.setItem("auth-token", token);
 

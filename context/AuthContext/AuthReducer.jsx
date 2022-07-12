@@ -17,13 +17,11 @@ export default (state, action) => {
             };
 
         case SET_USER:
-            const { username, email, profile } = payload.user;
-
             return {
                 ...state,
                 logged: true,
                 showAuthModal: false,
-                user: { username, email, profile },
+                user: payload,
             };
 
         default:

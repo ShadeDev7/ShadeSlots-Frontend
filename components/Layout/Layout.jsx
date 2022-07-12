@@ -2,7 +2,7 @@ import { useContext } from "react";
 
 import AuthContext from "../../context/AuthContext/AuthContext";
 
-import Header from "./Header/Header";
+import Header from "../Header/Header";
 import AuthModal from "./AuthModal/AuthModal";
 import Chat from "./Chat/Chat";
 import NavBar from "./NavBar/NavBar";
