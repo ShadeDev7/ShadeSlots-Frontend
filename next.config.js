@@ -1,9 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     reactStrictMode: false,
-    images: {
-        domains: ["res.cloudinary.com"],
-    },
+    images: { domains: ["shadeslots.s3.sa-east-1.amazonaws.com"] },
 };
 
 module.exports = nextConfig;
