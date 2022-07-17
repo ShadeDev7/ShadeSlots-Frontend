@@ -2,7 +2,7 @@ import { useContext } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
-import AuthContext from "../../context/AuthContext/AuthContext";
+import AuthContext from "../../../context/AuthContext/AuthContext";
 
 const ProfileButton = () => {
     const { logged, user } = useContext(AuthContext);

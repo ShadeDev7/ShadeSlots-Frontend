@@ -15,6 +15,11 @@
         font-family: "Pirata One", cursive;
     }
 
+    .scrollbar {
+        scrollbar-width: thin;
+        scrollbar-color: #374151 transparent;
+    }
+
     .scrollbar::-webkit-scrollbar {
         width: 7.5px;
         height: 7.5px;
@@ -29,9 +34,14 @@
     }
 
     .inputBox input:valid ~ span,
+    .inputBox input:disabled ~ span,
     .inputBox input:focus ~ span {
         @apply px-1 bg-gray-800 text-sm;
 
         transform: translateY(-20px);
+    }
+
+    .blur-content {
+        @apply blur-[1.5px] transition-all duration-300;
     }
 }

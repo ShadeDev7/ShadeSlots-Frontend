@@ -7,14 +7,9 @@ const LogoutButton = () => {
     const { handleSession } = useContext(AuthContext);
     const router = useRouter();
 
-    const logout = () => {
-        router.push("/");
-        handleSession(null);
-    };
-
     return (
         <button
-            onClick={logout}
+            onClick={() => handleSession(null, router.push)}
             className="
                 mx-auto
                 py-2

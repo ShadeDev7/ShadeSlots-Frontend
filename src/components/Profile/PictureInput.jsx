@@ -5,7 +5,7 @@ import AuthContext from "../../context/AuthContext/AuthContext";
 import { fileToBase64 } from "../../utils";
 
 const PictureInput = ({ username }) => {
-    const { handleSession } = useContext(AuthContext);
+    const { setShowLoadingModal, handleSession } = useContext(AuthContext);
 
     const [uploadedPicture, setUploadedPicture] = useState(null);
 
@@ -19,12 +19,15 @@ const PictureInput = ({ username }) => {
         const response = await request.json();
         if (response.status !== 200) return;
 
+        setShowLoadingModal(false, 1500);
         handleSession(response.data);
         setUploadedPicture(null);
     };
 
     useEffect(() => {
         if (!uploadedPicture || uploadedPicture.size / 1024 > 1024) return;
+
+        setShowLoadingModal(true, 0);
 
         fileToBase64(uploadedPicture)
             .then(base64Image => updateProfilePicture(base64Image))

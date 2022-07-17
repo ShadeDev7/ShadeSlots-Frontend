@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import Image from "next/image";
 
-import AuthContext from "../../context/AuthContext/AuthContext";
+import AuthContext from "../../../context/AuthContext/AuthContext";
 
 const LoginButton = () => {
     const { setShowAuthModal } = useContext(AuthContext);

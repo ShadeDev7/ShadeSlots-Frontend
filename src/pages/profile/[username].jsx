@@ -2,15 +2,21 @@ import { useContext, useState, useEffect } from "react";
 import { useRouter } from "next/router";
 
 import AuthContext from "../../context/AuthContext/AuthContext";
-
-import { Layout } from "../../components";
-import { ProfilePicture, PictureInput, ProfileData, LogoutButton } from "../../components/Profile";
+import {
+    Layout,
+    ProfilePicture,
+    PictureInput,
+    ProfileData,
+    LogoutButton,
+    Spinner,
+} from "../../components";
 
 const Profile = () => {
     const { user: ctxUser, logged } = useContext(AuthContext);
     const router = useRouter();
 
     const [user, setUser] = useState(null);
+    const [loading, setLoading] = useState(true);
 
     const fetchUser = async username => {
         const request = await fetch(`/api/users/${username}`);
@@ -18,6 +24,7 @@ const Profile = () => {
 
         if (response.status !== 200) return router.push("/");
 
+        setLoading(false);
         setUser(response.data);
     };
 
@@ -34,9 +41,9 @@ const Profile = () => {
     }, [ctxUser]);
 
     return (
-        <Layout profile={true}>
-            {user && (
-                <div className="my-8 p-8 mx-auto flex flex-col items-center justify-center">
+        <Layout profile>
+            <div className="my-8 p-8 mx-auto flex flex-col items-center justify-center">
+                {user ? (
                     <div className="flex flex-col gap-8">
                         <div className="flex flex-col gap-4">
                             <div className="relative w-52 h-52 rounded-full border-4 border-white overflow-hidden">
@@ -55,8 +62,10 @@ const Profile = () => {
 
                         {logged && ctxUser.username === user.username && <LogoutButton />}
                     </div>
-                </div>
-            )}
+                ) : (
+                    <Spinner size="64px" />
+                )}
+            </div>
         </Layout>
     );
 };

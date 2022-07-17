@@ -1,11 +1,12 @@
 import { Field } from "formik";
 
-const AnimatedInput = ({ field, type, placeholder, value }) => {
+const AnimatedInput = ({ disabled, field, type, value, placeholder }) => {
     return (
         <div className="inputBox relative">
             <Field
                 autoComplete="off"
                 required="required"
+                disabled={disabled}
                 name={field}
                 type={type}
                 value={value || ""}

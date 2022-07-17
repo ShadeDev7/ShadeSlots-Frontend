@@ -24,7 +24,7 @@ export default async function (req, res) {
             username: username.toLowerCase(),
             email,
             password: hashedPassword,
-            profile: { displayName: username, picture: "/imgs/placeholder_user.png" },
+            profile: { displayName: username, picture: "/imgs/default-profile.png" },
         }).save();
 
         const user = {

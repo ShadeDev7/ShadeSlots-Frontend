@@ -1,10 +1,12 @@
-import { useContext, useEffect } from "react";
+import { useContext, useState, useEffect } from "react";
 
-import AuthContext from "../../context/AuthContext/AuthContext";
+import AuthContext from "../../../context/AuthContext/AuthContext";
 import AuthForm from "./AuthForm";
+import Spinner from "../../Spinner";
 
 const AuthModal = () => {
     const { modal, setShowAuthModal, setAuthModal } = useContext(AuthContext);
+    const [loading, setLoading] = useState(false);
 
     const handleModalExit = e => {
         if (e.target.id !== "authModal") return;
@@ -26,7 +28,7 @@ const AuthModal = () => {
         <div
             id="authModal"
             className="
-                z-[1]
+                z-[2]
                 absolute
                 w-full
                 min-h-screen
@@ -79,7 +81,9 @@ const AuthModal = () => {
                     </button>
                 </div>
 
-                <AuthForm variant={modal} />
+                <AuthForm variant={modal} loading={loading} setLoading={setLoading} />
+
+                {loading && <Spinner size="48px" />}
             </div>
         </div>
     );

@@ -1,17 +1,27 @@
 import { useReducer, useEffect } from "react";
 
-import AuthContext from "./AuthContext";
 import AuthReducer from "./AuthReducer";
+import AuthContext from "./AuthContext";
+
 import initialState from "./initialState";
 
-import { SET_SHOW_MODAL, SET_MODAL, HANDLE_SESSION } from "./types";
+import { SET_SHOW_LOADING_MODAL, SET_SHOW_AUTH_MODAL, SET_MODAL, HANDLE_SESSION } from "./types";
 
 const AuthState = props => {
     const [state, dispatch] = useReducer(AuthReducer, initialState);
 
+    const setShowLoadingModal = (newValue, delay = 1000) => {
+        setTimeout(() => {
+            dispatch({
+                type: SET_SHOW_LOADING_MODAL,
+                payload: newValue,
+            });
+        }, delay);
+    };
+
     const setShowAuthModal = newValue => {
         dispatch({
-            type: SET_SHOW_MODAL,
+            type: SET_SHOW_AUTH_MODAL,
             payload: newValue,
         });
     };
@@ -36,8 +46,10 @@ const AuthState = props => {
         return response.data;
     };
 
-    const handleSession = session => {
-        localStorage.setItem("auth-token", session?.token);
+    const handleSession = (session, redirect = false) => {
+        if (redirect) redirect("/");
+
+        localStorage.setItem("auth-token", session?.token ?? null);
 
         dispatch({
             type: HANDLE_SESSION,
@@ -48,17 +60,20 @@ const AuthState = props => {
     useEffect(() => {
         const localStorageToken = localStorage.getItem("auth-token");
 
-        if (!localStorageToken) return;
+        if (!localStorageToken) return setShowLoadingModal(false);
 
         verifyToken(localStorageToken).then(session => {
-            if (!session) return localStorage.removeItem("auth-token");
+            if (session) handleSession(session);
+            else localStorage.removeItem("auth-token");
 
-            handleSession(session);
+            setShowLoadingModal(false);
         });
     }, []);
 
     return (
-        <AuthContext.Provider value={{ ...state, setShowAuthModal, setAuthModal, handleSession }}>
+        <AuthContext.Provider
+            value={{ ...state, setShowLoadingModal, setShowAuthModal, setAuthModal, handleSession }}
+        >
             {props.children}
         </AuthContext.Provider>
     );
