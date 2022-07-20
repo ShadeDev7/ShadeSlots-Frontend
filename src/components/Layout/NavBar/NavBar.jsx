@@ -6,7 +6,7 @@ const NavBar = () => {
     const { pathname } = useRouter();
 
     return (
-        <div className="px-4 w-full md:w-auto md:max-w-full bg-gray-900 rounded-full">
+        <div className="px-4 fixed w-auto max-w-[90%] md:max-w-[75%] lg:max-w-[60%] bg-gray-900 rounded-full shadow-lg">
             <div className="py-2 mx-auto overflow-x-auto scrollbar">
                 <nav className="flex gap-2">
                     <NavigationLink href="/" pathname={pathname}>
@@ -14,7 +14,7 @@ const NavBar = () => {
                     </NavigationLink>
 
                     <NavigationLink href="/games/blackjack" pathname={pathname}>
-                        BlackJack
+                        Blackjack
                     </NavigationLink>
 
                     <NavigationLink href="/games/dice" pathname={pathname}>

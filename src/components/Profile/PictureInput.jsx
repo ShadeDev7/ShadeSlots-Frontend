@@ -27,7 +27,7 @@ const PictureInput = ({ username }) => {
     useEffect(() => {
         if (!uploadedPicture || uploadedPicture.size / 1024 > 1024) return;
 
-        setShowLoadingModal(true, 0);
+        setShowLoadingModal(true);
 
         fileToBase64(uploadedPicture)
             .then(base64Image => updateProfilePicture(base64Image))

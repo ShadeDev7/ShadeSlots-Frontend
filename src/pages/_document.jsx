@@ -23,7 +23,7 @@ const Document = () => {
                 <link rel="apple-touch-icon" sizes="96x96" href="/favicon.png" />
                 <link rel="icon" type="image/png" sizes="96x96" href="/favicon.png" />
                 <link rel="icon" type="image/png" sizes="96x96" href="/favicon.png" />
-                <link rel="icon" type="image/x-icon" href="/favicon/favicon.ico"></link>
+                <link rel="icon" type="image/x-icon" href="/favicon.ico"></link>
             </Head>
 
             <body>

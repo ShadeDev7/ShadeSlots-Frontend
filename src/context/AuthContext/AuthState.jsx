@@ -10,7 +10,7 @@ import { SET_SHOW_LOADING_MODAL, SET_SHOW_AUTH_MODAL, SET_MODAL, HANDLE_SESSION 
 const AuthState = props => {
     const [state, dispatch] = useReducer(AuthReducer, initialState);
 
-    const setShowLoadingModal = (newValue, delay = 1000) => {
+    const setShowLoadingModal = (newValue, delay = 0) => {
         setTimeout(() => {
             dispatch({
                 type: SET_SHOW_LOADING_MODAL,

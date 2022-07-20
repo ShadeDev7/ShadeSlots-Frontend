@@ -16,10 +16,12 @@ const Layout = ({ children, profile = false }) => {
 
             <Header />
 
-            <div className="my-8 2xl:my-12 mx-auto w-[85%] md:w-3/4 lg:w-3/5 2xl:1/2 flex flex-col items-center gap-8 2xl:gap-16">
+            <div className="mx-auto py-6 w-full max-h-screen flex flex-col items-center overflow-y-scroll scrollbar">
                 {!profile && <NavBar />}
 
-                <main className="w-full flex flex-col items-center">{children}</main>
+                <main className="my-16 w-full flex flex-col items-center justify-center">
+                    {children}
+                </main>
             </div>
         </>
     );

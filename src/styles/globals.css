@@ -6,7 +6,7 @@
 
 @layer base {
     body {
-        @apply bg-slate-800 text-white scrollbar;
+        @apply bg-slate-800 text-white overflow-hidden;
     }
 }
 
