@@ -12,10 +12,10 @@ import {
 } from "../../components";
 
 const Profile = () => {
-    const { user: ctxUser, logged } = useContext(AuthContext);
+    const { user, logged } = useContext(AuthContext);
     const router = useRouter();
 
-    const [user, setUser] = useState(null);
+    const [userProfile, setUserProfile] = useState(null);
     const [loading, setLoading] = useState(true);
 
     const fetchUser = async username => {
@@ -24,8 +24,11 @@ const Profile = () => {
 
         if (response.status !== 200) return router.push("/");
 
-        setLoading(false);
-        setUser(response.data);
+        setUserProfile(response.data);
+
+        setTimeout(() => {
+            setLoading(false);
+        }, 500);
     };
 
     useEffect(() => {
@@ -34,33 +37,27 @@ const Profile = () => {
         fetchUser(router.query.username.toLowerCase());
     }, [router.isReady]);
 
-    useEffect(() => {
-        if (!logged || ctxUser?.username !== user?.username) return;
-
-        setUser(ctxUser);
-    }, [ctxUser]);
-
     return (
         <Layout profile>
             <div className="my-8 p-8 mx-auto flex flex-col items-center justify-center">
-                {user ? (
+                {userProfile && !loading ? (
                     <div className="flex flex-col gap-8">
                         <div className="flex flex-col gap-4">
                             <div className="relative w-52 h-52 rounded-full border-4 border-white overflow-hidden">
-                                <ProfilePicture profilePicture={user.profile.picture} />
+                                <ProfilePicture profilePicture={userProfile.profile.picture} />
 
-                                {logged && ctxUser.username === user.username && (
-                                    <PictureInput username={user.username} />
+                                {logged && user.username === userProfile.username && (
+                                    <PictureInput username={userProfile.username} />
                                 )}
                             </div>
 
                             <ProfileData
-                                displayName={user.profile.displayName}
-                                createdAt={user.createdAt}
+                                displayName={userProfile.profile.displayName}
+                                createdAt={userProfile.createdAt}
                             />
                         </div>
 
-                        {logged && ctxUser.username === user.username && <LogoutButton />}
+                        {logged && user.username === userProfile.username && <LogoutButton />}
                     </div>
                 ) : (
                     <Spinner size="64px" />

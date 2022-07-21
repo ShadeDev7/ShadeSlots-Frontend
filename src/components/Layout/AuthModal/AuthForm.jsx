@@ -1,5 +1,4 @@
 import { useContext, useState } from "react";
-import { useRouter } from "next/router";
 import { Formik, Form } from "formik";
 
 import AuthContext from "../../../context/AuthContext/AuthContext";
@@ -8,7 +7,6 @@ import schemas from "../../../data/schemas";
 
 const AuthForm = ({ variant, loading, setLoading }) => {
     const { handleSession } = useContext(AuthContext);
-    const router = useRouter();
 
     const [error, setError] = useState("");
 
@@ -35,7 +33,7 @@ const AuthForm = ({ variant, loading, setLoading }) => {
         }
 
         setLoading(false);
-        handleSession(response.data, router.pathname !== "/" && router.push);
+        handleSession(response.data, true);
     };
 
     return (

@@ -1,8 +1,8 @@
 export default {
-    logged: false,
     showLoadingModal: true,
     showAuthModal: false,
     modal: "login",
+    logged: false,
     token: null,
     user: null,
 };

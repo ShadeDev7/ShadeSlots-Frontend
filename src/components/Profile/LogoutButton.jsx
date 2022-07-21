@@ -1,15 +1,13 @@
 import { useContext } from "react";
-import { useRouter } from "next/router";
 
 import AuthContext from "../../context/AuthContext/AuthContext";
 
 const LogoutButton = () => {
     const { handleSession } = useContext(AuthContext);
-    const router = useRouter();
 
     return (
         <button
-            onClick={() => handleSession(null, router.push)}
+            onClick={() => handleSession(null, true)}
             className="
                 mx-auto
                 py-2

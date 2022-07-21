@@ -1,4 +1,5 @@
 import { useReducer, useEffect } from "react";
+import { useRouter } from "next/router";
 
 import AuthReducer from "./AuthReducer";
 import AuthContext from "./AuthContext";
@@ -9,8 +10,9 @@ import { SET_SHOW_LOADING_MODAL, SET_SHOW_AUTH_MODAL, SET_MODAL, HANDLE_SESSION 
 
 const AuthState = props => {
     const [state, dispatch] = useReducer(AuthReducer, initialState);
+    const router = useRouter();
 
-    const setShowLoadingModal = (newValue, delay = 0) => {
+    const setShowLoadingModal = (newValue, delay = 500) => {
         setTimeout(() => {
             dispatch({
                 type: SET_SHOW_LOADING_MODAL,
@@ -33,23 +35,10 @@ const AuthState = props => {
         });
     };
 
-    const verifyToken = async token => {
-        const request = await fetch("/api/auth/verifyToken", {
-            headers: { "Content-Type": "application/json" },
-            method: "POST",
-            body: JSON.stringify({ token }),
-        });
-        const response = await request.json();
-
-        if (response.status !== 200) return;
-
-        return response.data;
-    };
-
     const handleSession = (session, redirect = false) => {
-        if (redirect) redirect("/");
+        if (redirect) router.push("/");
 
-        localStorage.setItem("auth-token", session?.token ?? null);
+        localStorage.setItem("auth-token", JSON.stringify(session?.token ?? null));
 
         dispatch({
             type: HANDLE_SESSION,
@@ -58,16 +47,26 @@ const AuthState = props => {
     };
 
     useEffect(() => {
-        const localStorageToken = localStorage.getItem("auth-token");
+        const token = JSON.parse(localStorage.getItem("auth-token"));
 
-        if (!localStorageToken) return setShowLoadingModal(false);
+        if (!token) return setShowLoadingModal(false);
 
-        verifyToken(localStorageToken).then(session => {
-            if (session) handleSession(session);
-            else localStorage.removeItem("auth-token");
-
+        try {
+            fetch("/api/auth/verifyToken", {
+                headers: { "Content-Type": "application/json" },
+                method: "POST",
+                body: JSON.stringify({ token }),
+            })
+                .then(request => request.json())
+                .then(response => {
+                    if (response.status === 200) handleSession(response.data);
+                    else localStorage.removeItem("auth-token");
+                });
+        } catch (e) {
+            localStorage.removeItem("auth-token");
+        } finally {
             setShowLoadingModal(false);
-        });
+        }
     }, []);
 
     return (

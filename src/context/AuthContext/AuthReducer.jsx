@@ -29,10 +29,9 @@ export default (state, action) => {
 
             return {
                 ...state,
-                logged: true,
                 showAuthModal: false,
-                token: payload.token,
-                user: payload.user,
+                logged: true,
+                ...payload,
             };
 
         default:
