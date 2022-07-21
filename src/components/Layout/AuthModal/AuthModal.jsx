@@ -28,7 +28,7 @@ const AuthModal = () => {
         <div
             id="authModal"
             className="
-                z-[2]
+                z-[3]
                 absolute
                 w-full
                 min-h-screen

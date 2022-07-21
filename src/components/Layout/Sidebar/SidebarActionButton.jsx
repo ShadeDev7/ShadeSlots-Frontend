@@ -4,7 +4,7 @@ const SidebarActionButton = ({ showSidebar, setShowSidebar }) => {
     return (
         <button
             onClick={() => setShowSidebar(!showSidebar)}
-            className={`
+            className="
                 w-full
                 h-12
                 md:h-16
@@ -13,7 +13,7 @@ const SidebarActionButton = ({ showSidebar, setShowSidebar }) => {
                 items-center
                 justify-center
                 shadow-lg
-            `}
+            "
         >
             <Image
                 src="/imgs/icons/sidebar.svg"

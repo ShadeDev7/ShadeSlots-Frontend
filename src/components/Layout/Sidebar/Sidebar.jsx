@@ -1,11 +1,19 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 
+import AuthContext from "../../../context/AuthContext/AuthContext";
 import SidebarContext from "../../../context/SidebarContext/SidebarContext";
 import SidebarActionButton from "./SidebarActionButton";
-import SidebarContent from "./SidebarContent";
+import SidebarTabButton from "./SidebarTabButton";
+import Menu from "./Menu/Menu";
+import Chat from "./Chat/Chat";
 
 const Sidebar = () => {
-    const { showSidebar, setShowSidebar } = useContext(SidebarContext);
+    const { logged } = useContext(AuthContext);
+    const { showSidebar, sidebarTab, setShowSidebar, setSidebarTab } = useContext(SidebarContext);
+
+    useEffect(() => {
+        if (logged && showSidebar) setShowSidebar(false);
+    }, [logged]);
 
     return (
         <div
@@ -29,7 +37,44 @@ const Sidebar = () => {
         >
             <SidebarActionButton showSidebar={showSidebar} setShowSidebar={setShowSidebar} />
 
-            <SidebarContent />
+            <div className="w-full h-full md:min-h-screen flex flex-col">
+                <div
+                    className={`
+                        w-full
+                        ${showSidebar ? "max-w-full" : "md:w-0 md:max-w-0 md:opacity-0"}
+                        h-12
+                        flex
+                        transition-all
+                        duration-500
+                    `}
+                >
+                    <SidebarTabButton
+                        tab="menu"
+                        sidebarTab={sidebarTab}
+                        setSidebarTab={setSidebarTab}
+                    />
+
+                    <SidebarTabButton
+                        tab="chat"
+                        sidebarTab={sidebarTab}
+                        setSidebarTab={setSidebarTab}
+                    />
+                </div>
+
+                <div
+                    className={`
+                        w-full
+                        h-[calc(100%-6rem)]
+                        ${showSidebar ? "md:h-[calc(100%-12rem)]" : "md:h-[calc(100%-9rem)]"}
+                    `}
+                >
+                    {sidebarTab === "menu" ? (
+                        <Menu showSidebar={showSidebar} />
+                    ) : (
+                        <Chat showSidebar={showSidebar} />
+                    )}
+                </div>
+            </div>
         </div>
     );
 };
