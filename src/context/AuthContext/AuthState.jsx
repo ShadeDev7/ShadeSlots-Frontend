@@ -12,7 +12,7 @@ const AuthState = props => {
     const [state, dispatch] = useReducer(AuthReducer, initialState);
     const router = useRouter();
 
-    const setShowLoadingModal = (newValue, delay = 500) => {
+    const setShowLoadingModal = (newValue, delay = 750) => {
         setTimeout(() => {
             dispatch({
                 type: SET_SHOW_LOADING_MODAL,

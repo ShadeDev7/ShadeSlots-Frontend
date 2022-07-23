@@ -61,21 +61,25 @@ const AuthModal = () => {
                     hover:cursor-auto
                 "
             >
-                <div className="w-full flex justify-around bg-gray-900 rounded font-bold">
+                <div className="w-full flex justify-around rounded font-bold">
                     <button
                         onClick={modal !== "signin" ? () => setAuthModal("signin") : null}
-                        className={`py-2 w-full rounded-l ${
-                            modal === "signin" ? "bg-gray-700" : "hover:bg-slate-900"
-                        }`}
+                        className={`
+                            py-2
+                            w-full
+                            rounded-l
+                            ${modal === "signin" ? "bg-gray-900" : "bg-gray-700"}`}
                     >
                         Sign In
                     </button>
 
                     <button
                         onClick={modal !== "login" ? () => setAuthModal("login") : null}
-                        className={`py-2 w-full rounded-r ${
-                            modal === "login" ? "bg-gray-700" : "hover:bg-slate-900"
-                        }`}
+                        className={`
+                            py-2
+                            w-full
+                            rounded-r
+                            ${modal === "login" ? "bg-gray-900" : "bg-gray-700"}`}
                     >
                         Log In
                     </button>

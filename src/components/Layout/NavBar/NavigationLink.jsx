@@ -8,9 +8,7 @@ const NavigationLink = ({ href, pathname, children }) => {
                 className={`
                     py-2
                     px-4
-                    mx-auto
-                    ${href === pathname ? "bg-gray-700" : ""}
-                    hover:bg-gray-700
+                    ${href === pathname ? "bg-gray-700" : "hover:bg-gray-700"}
                     rounded-full
                     flex
                     items-center
@@ -26,7 +24,6 @@ const NavigationLink = ({ href, pathname, children }) => {
                     width="16px"
                     height="16px"
                     layout="fixed"
-                    priority
                 />
 
                 {children}

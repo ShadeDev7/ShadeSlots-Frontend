@@ -16,10 +16,10 @@ const AnimatedInput = ({ disabled, field, type, value, placeholder }) => {
                     w-full
                     bg-gray-800
                     rounded
-                    border-gray-600
                     border-2
-                    outline-none
+                    border-gray-600
                     text-gray-400
+                    outline-none
                 "
             />
 

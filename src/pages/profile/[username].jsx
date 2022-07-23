@@ -25,10 +25,7 @@ const Profile = () => {
         if (response.status !== 200) return router.push("/");
 
         setUserProfile(response.data);
-
-        setTimeout(() => {
-            setLoading(false);
-        }, 500);
+        setLoading(false);
     };
 
     useEffect(() => {
@@ -36,6 +33,10 @@ const Profile = () => {
 
         fetchUser(router.query.username.toLowerCase());
     }, [router.isReady]);
+
+    useEffect(() => {
+        if (user && user.username === userProfile?.username) setUserProfile(user);
+    }, [user]);
 
     return (
         <Layout profile>

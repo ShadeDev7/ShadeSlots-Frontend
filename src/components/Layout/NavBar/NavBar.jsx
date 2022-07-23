@@ -6,8 +6,21 @@ const NavBar = () => {
     const { pathname } = useRouter();
 
     return (
-        <div className="px-4 fixed w-auto max-w-[90%] md:max-w-[75%] lg:max-w-[60%] bg-gray-900 rounded-full shadow-lg">
-            <div className="py-2 mx-auto overflow-x-auto scrollbar">
+        <div
+            className="
+                mt-5
+                px-4
+                fixed
+                w-auto
+                max-w-[90%]
+                md:max-w-[75%]
+                lg:max-w-[60%]
+                bg-gray-900
+                rounded-full
+                shadow-lg
+            "
+        >
+            <div className="py-2 overflow-x-auto scrollbar">
                 <nav className="flex gap-2">
                     <NavigationLink href="/" pathname={pathname}>
                         Home

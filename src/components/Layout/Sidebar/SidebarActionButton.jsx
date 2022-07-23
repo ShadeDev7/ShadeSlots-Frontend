@@ -21,7 +21,7 @@ const SidebarActionButton = ({ showSidebar, setShowSidebar }) => {
                 height="28px"
                 className={`${
                     showSidebar ? "-rotate-90 md:rotate-0" : "rotate-90 md:-rotate-180"
-                } transition-all duration-500`}
+                } transition-transform duration-500`}
             />
         </button>
     );

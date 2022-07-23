@@ -6,7 +6,6 @@ import { fileToBase64 } from "../../utils";
 
 const PictureInput = ({ username }) => {
     const { setShowLoadingModal, handleSession } = useContext(AuthContext);
-
     const [uploadedPicture, setUploadedPicture] = useState(null);
 
     const updateProfilePicture = async base64Image => {
@@ -15,8 +14,8 @@ const PictureInput = ({ username }) => {
             method: "PATCH",
             body: JSON.stringify({ picture: base64Image }),
         });
-
         const response = await request.json();
+
         if (response.status !== 200) return;
 
         setShowLoadingModal(false, 1500);
@@ -30,8 +29,8 @@ const PictureInput = ({ username }) => {
         setShowLoadingModal(true);
 
         fileToBase64(uploadedPicture)
-            .then(base64Image => updateProfilePicture(base64Image))
-            .catch(e => console.log(e));
+            .then(updateProfilePicture)
+            .catch(() => setUploadedPicture(null));
     }, [uploadedPicture]);
 
     return (
@@ -39,10 +38,10 @@ const PictureInput = ({ username }) => {
             <label
                 htmlFor="profilePicture"
                 className="
-                    w-full
-                    h-full
                     relative
                     z-[1]
+                    w-full
+                    h-full
                     bg-gray-700/70
                     rounded-full
                     flex

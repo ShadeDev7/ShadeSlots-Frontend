@@ -3,11 +3,11 @@ import { Formik, Form } from "formik";
 
 import AuthContext from "../../../context/AuthContext/AuthContext";
 import AnimatedInput from "./AnimatedInput";
+import ErrorMessage from "./ErrorMessage";
 import schemas from "../../../data/schemas";
 
 const AuthForm = ({ variant, loading, setLoading }) => {
     const { handleSession } = useContext(AuthContext);
-
     const [error, setError] = useState("");
 
     const handleSubmit = async (values, resetForm) => {
@@ -38,9 +38,7 @@ const AuthForm = ({ variant, loading, setLoading }) => {
 
     return (
         <div className="w-full flex flex-col gap-6">
-            {error && (
-                <p className="py-1 bg-red-800 rounded-sm font-bold text-sm text-center">{error}</p>
-            )}
+            {error && <ErrorMessage error={error} />}
 
             <Formik
                 initialValues={schemas[variant].initialValues}
@@ -58,7 +56,11 @@ const AuthForm = ({ variant, loading, setLoading }) => {
                                     flex
                                     flex-col
                                     gap-2
-                                    ${loading ? "pointer-events-none blur-content" : ""}
+                                    ${
+                                        loading
+                                            ? "pointer-events-none blur-[1.5px] transition-all duration-300"
+                                            : ""
+                                    }
                                 `}
                             >
                                 {errors[field] && touched[field] && (
@@ -86,12 +88,10 @@ const AuthForm = ({ variant, loading, setLoading }) => {
                                 bg-gray-900
                                 rounded
                                 font-bold
-                                transition-colors
-                                duration-300
                                 ${
                                     loading
                                         ? "hover:cursor-not-allowed"
-                                        : "hover:bg-slate-900 hover:cursor-pointer"
+                                        : "hover:cursor-pointer hover:bg-slate-900 transition-colors duration-300"
                                 }
                             `}
                         />

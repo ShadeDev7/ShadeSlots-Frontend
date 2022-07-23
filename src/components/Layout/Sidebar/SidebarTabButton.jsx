@@ -7,12 +7,10 @@ const SidebarTabButton = ({ tab, sidebarTab, setSidebarTab }) => {
             className={`
                 w-full
                 h-full
-                ${tab === sidebarTab ? "bg-gray-900" : ""}
+                ${tab === sidebarTab ? "" : "bg-gray-900"}
                 flex
                 items-center
                 justify-center
-                transition-colors
-                duration-300
             `}
         >
             <Image src={`/imgs/icons/${tab}.svg`} width="20px" height="20px" />

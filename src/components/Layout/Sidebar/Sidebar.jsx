@@ -25,7 +25,7 @@ const Sidebar = () => {
                 w-full
                 ${
                     showSidebar
-                        ? "md:w-4/12 lg:w-3/12 xl:w-1/5 2xl:w-2/12 max-h-[calc(100%-6rem)]"
+                        ? "md:w-[30%] lg:w-3/12 xl:w-1/5 2xl:w-2/12 max-h-[calc(100%-6rem)]"
                         : "md:w-16 max-h-12"
                 }
                 h-full
