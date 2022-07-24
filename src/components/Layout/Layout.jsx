@@ -3,9 +3,9 @@ import { useContext } from "react";
 import AuthContext from "../../context/AuthContext/AuthContext";
 import LoadingModal from "./LoadingModal";
 import AuthModal from "./AuthModal/AuthModal";
-import Sidebar from "./Sidebar/Sidebar";
 import Header from "./Header/Header";
 import NavBar from "./NavBar/NavBar";
+import Chat from "./Chat/Chat";
 
 const Layout = ({ profile = false, children }) => {
     const { showLoadingModal, showAuthModal } = useContext(AuthContext);
@@ -16,51 +16,19 @@ const Layout = ({ profile = false, children }) => {
             {showAuthModal && <AuthModal />}
 
             <Header />
-            <Sidebar />
 
-            <div
-                className={`
-                    w-full
-                    min-h-[calc(100vh-9rem)]
-                    md:min-h-[calc(100vh-5rem)]
-                    flex
-                    flex-col
-                    items-center
-                    ${profile ? "justify-center" : ""}
-                `}
-            >
-                {!profile && <NavBar />}
+            <div className="w-full h-[calc(100vh-9rem)] md:h-[calc(100vh-5rem)] flex">
+                <div className="md:order-2 w-full md:w-[calc(100%-4rem)] h-full flex flex-col items-center overflow-y-auto scrollbar">
+                    {!profile && <NavBar />}
 
-                <div
-                    className={`
-                        ${!profile ? "mt-24" : ""}
-                        w-full
-                        h-full
-                        max-h-[calc(100vh-15rem)]
-                        md:max-h-[calc(100vh-10.5rem)]
-                        flex
-                        flex-col
-                        items-center
-                        gap-6
-                        overflow-y-auto
-                        scrollbar
-                    `}
-                >
-                    <main
-                        className="
-                            w-[90%]
-                            md:w-4/5
-                            lg:w-3/4
-                            xl:w-[70%]
-                            h-full
-                            flex
-                            flex-col
-                            items-center
-                        "
-                    >
-                        {children}
-                    </main>
+                    <div className={`${profile ? "" : "mt-[5.5rem]"} w-full h-full`}>
+                        <main className="mx-auto w-[90%] md:w-[85%] lg:w-4/5 xl:w-3/4 2xl:w-[70%] flex flex-col items-center">
+                            {children}
+                        </main>
+                    </div>
                 </div>
+
+                <Chat />
             </div>
         </>
     );

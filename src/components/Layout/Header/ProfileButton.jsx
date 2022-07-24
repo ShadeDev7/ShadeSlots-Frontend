@@ -5,27 +5,15 @@ import Image from "next/image";
 import AuthContext from "../../../context/AuthContext/AuthContext";
 
 const ProfileButton = () => {
-    const { logged, user } = useContext(AuthContext);
+    const { user } = useContext(AuthContext);
 
     return (
         <Link href={`/profile/${user.username}`}>
             <a>
-                <div
-                    className="
-                        relative
-                        w-full
-                        h-full
-                        rounded-full
-                        border-2
-                        border-white
-                        transition-transform
-                        duration-300
-                        hover:scale-110
-                    "
-                >
+                <div className="relative w-full h-full rounded-full border-2 border-white transition-transform duration-300 hover:scale-110">
                     <Image
                         src={user.profile.picture}
-                        alt={`${user.profile.displayName} Profile`}
+                        alt={`${user.profile.displayName} profile`}
                         layout="fill"
                         objectFit="cover"
                         quality={50}

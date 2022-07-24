@@ -27,59 +27,25 @@ const AuthModal = () => {
     return (
         <div
             id="authModal"
-            className="
-                z-[3]
-                absolute
-                w-full
-                min-h-screen
-                bg-black/80
-                flex
-                items-center
-                opacity-0
-                transition-opacity
-                duration-300
-                hover:cursor-pointer
-            "
+            className="absolute z-[2] w-full min-h-screen bg-black/80 flex items-center opacity-0 transition-opacity duration-300 hover:cursor-pointer"
             onClick={handleModalExit}
         >
-            <div
-                className="
-                    mx-auto
-                    p-10
-                    w-4/5
-                    md:w-3/5
-                    lg:w-1/2
-                    xl:w-2/5
-                    2xl:w-[30%]
-                    bg-gray-800
-                    rounded
-                    flex
-                    flex-col
-                    items-center
-                    justify-center
-                    gap-6
-                    hover:cursor-auto
-                "
-            >
+            <div className="mx-auto p-10 w-4/5 md:w-3/5 lg:w-1/2 xl:w-2/5 2xl:w-[30%] bg-gray-800 rounded flex flex-col items-center justify-center gap-6 hover:cursor-auto">
                 <div className="w-full flex justify-around rounded font-bold">
                     <button
                         onClick={modal !== "signin" ? () => setAuthModal("signin") : null}
-                        className={`
-                            py-2
-                            w-full
-                            rounded-l
-                            ${modal === "signin" ? "bg-gray-900" : "bg-gray-700"}`}
+                        className={`py-2 w-full rounded-l ${
+                            modal === "signin" ? "bg-gray-900" : "bg-gray-700"
+                        }`}
                     >
                         Sign In
                     </button>
 
                     <button
                         onClick={modal !== "login" ? () => setAuthModal("login") : null}
-                        className={`
-                            py-2
-                            w-full
-                            rounded-r
-                            ${modal === "login" ? "bg-gray-900" : "bg-gray-700"}`}
+                        className={`py-2 w-full rounded-r ${
+                            modal === "login" ? "bg-gray-900" : "bg-gray-700"
+                        }`}
                     >
                         Log In
                     </button>

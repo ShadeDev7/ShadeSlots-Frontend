@@ -40,7 +40,7 @@ const Profile = () => {
 
     return (
         <Layout profile>
-            <div className="my-8 p-8 mx-auto flex flex-col items-center justify-center">
+            <div className="p-8 min-h-[calc(100vh-9rem)] md:min-h-[calc(100vh-5rem)] flex flex-col items-center justify-center">
                 {userProfile && !loading ? (
                     <div className="flex flex-col gap-8">
                         <div className="flex flex-col gap-4">

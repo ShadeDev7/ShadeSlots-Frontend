@@ -51,17 +51,11 @@ const AuthForm = ({ variant, loading, setLoading }) => {
                         {schemas[variant].fields.map(({ field, type, placeholder }) => (
                             <div
                                 key={field}
-                                className={`
-                                    w-full
-                                    flex
-                                    flex-col
-                                    gap-2
-                                    ${
-                                        loading
-                                            ? "pointer-events-none blur-[1.5px] transition-all duration-300"
-                                            : ""
-                                    }
-                                `}
+                                className={`w-full flex flex-col gap-2 ${
+                                    loading
+                                        ? "pointer-events-none blur-[1.5px] transition-all duration-300"
+                                        : ""
+                                }`}
                             >
                                 {errors[field] && touched[field] && (
                                     <p className="text-sm text-center text-gray-500">
@@ -82,18 +76,11 @@ const AuthForm = ({ variant, loading, setLoading }) => {
                         <input
                             type="submit"
                             value={variant === "login" ? "Log In" : "Sign In"}
-                            className={`
-                                py-2
-                                w-full
-                                bg-gray-900
-                                rounded
-                                font-bold
-                                ${
-                                    loading
-                                        ? "hover:cursor-not-allowed"
-                                        : "hover:cursor-pointer hover:bg-slate-900 transition-colors duration-300"
-                                }
-                            `}
+                            className={`py-2 w-full bg-gray-900 rounded font-bold ${
+                                loading
+                                    ? "hover:cursor-not-allowed"
+                                    : "hover:cursor-pointer hover:bg-slate-900 transition-colors duration-300"
+                            }`}
                         />
                     </Form>
                 )}

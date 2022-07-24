@@ -8,6 +8,7 @@ const LoginButton = () => {
 
     return (
         <button
+            aria-label="Login button"
             onClick={() => setShowAuthModal(true)}
             className="relative w-full h-full transition-transform duration-300 hover:scale-110"
         >

@@ -4,7 +4,7 @@ const ProfilePicture = ({ profilePicture }) => {
     return (
         <Image
             src={profilePicture}
-            alt="Profile Picture"
+            alt="Profile picture"
             layout="fill"
             objectFit="cover"
             quality={100}

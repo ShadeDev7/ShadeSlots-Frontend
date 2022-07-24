@@ -37,26 +37,11 @@ const PictureInput = ({ username }) => {
         <>
             <label
                 htmlFor="profilePicture"
-                className="
-                    relative
-                    z-[1]
-                    w-full
-                    h-full
-                    bg-gray-700/70
-                    rounded-full
-                    flex
-                    items-center
-                    justify-center
-                    opacity-0
-                    hover:opacity-100
-                    hover:cursor-pointer
-                    transition-opacity
-                    duration-500
-                "
+                className="relative z-[1] w-full h-full bg-gray-700/70 rounded-full flex items-center justify-center opacity-0 hover:opacity-100 hover:cursor-pointer transition-opacity duration-500"
             >
                 <Image
                     src="/imgs/icons/circle_add.svg"
-                    alt="Update Profile Picture"
+                    alt="Update profile picture"
                     width="48px"
                     height="48px"
                 />

@@ -5,18 +5,9 @@ const NavigationLink = ({ href, pathname, children }) => {
     return (
         <Link href={href}>
             <a
-                className={`
-                    py-2
-                    px-4
-                    ${href === pathname ? "bg-gray-700" : "hover:bg-gray-700"}
-                    rounded-full
-                    flex
-                    items-center
-                    gap-2
-                    font-medium
-                    transition-colors
-                    duration-300
-                `}
+                className={`py-2 px-4 ${
+                    href === pathname ? "bg-gray-700" : "hover:bg-gray-700"
+                } rounded-full flex items-center gap-2 font-medium transition-colors duration-300`}
             >
                 <Image
                     src={`/imgs/icons/${children.toLowerCase()}.svg`}
